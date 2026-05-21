@@ -1,1 +1,91 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRM — Твій Одяг</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="../index.html">
+        <span class="brand-logo">ТО</span>
+        <span>
+          <strong>CRM Твій Одяг</strong>
+          <small>товари • замовлення • фото</small>
+        </span>
+      </a>
+      <nav class="menu">
+        <a href="../index.html">На сайт</a>
+        <a href="#products">Товари</a>
+        <a href="#orders">Замовлення</a>
+      </nav>
+      <button id="exportOrders" class="btn btn-primary">Експорт CSV</button>
+    </div>
+  </header>
 
+  <main class="container admin-page">
+    <section class="admin-hero">
+      <div>
+        <small>Панель управління</small>
+        <h1>CRM для продажів</h1>
+        <p>Додавай товари з фото, контролюй замовлення і змінюй статуси.</p>
+      </div>
+      <div class="status-grid">
+        <div><span>Нове</span><strong id="countNew">0</strong></div>
+        <div><span>В роботі</span><strong id="countWork">0</strong></div>
+        <div><span>Відправлено</span><strong id="countSent">0</strong></div>
+        <div><span>Завершено</span><strong id="countDone">0</strong></div>
+      </div>
+    </section>
+
+    <section id="products" class="admin-block">
+      <div class="block-head">
+        <div>
+          <small>Каталог</small>
+          <h2>Додати товар</h2>
+        </div>
+      </div>
+
+      <form id="productForm" class="admin-form">
+        <input id="productName" required placeholder="Назва товару" />
+        <select id="productCategory">
+          <option>Жіноче</option>
+          <option>Чоловіче</option>
+          <option>Новинки</option>
+          <option>Акції</option>
+        </select>
+        <input id="productPrice" required type="number" placeholder="Ціна" />
+        <input id="productOldPrice" type="number" placeholder="Стара ціна" />
+        <input id="productSizes" placeholder="Розміри через кому: S,M,L" value="S,M,L" />
+        <input id="productColors" placeholder="Кольори через кому" />
+        <input id="productTag" placeholder="Мітка: Хіт / Акція" value="Новинка" />
+        <input id="productImageUrl" placeholder="Або посилання на фото" />
+        <input id="productImageFile" type="file" accept="image/*" />
+        <button id="saveProductBtn" type="submit" class="btn btn-primary">Додати товар</button>
+      </form>
+
+      <div id="imagePreviewWrap" class="preview hidden">
+        <img id="imagePreview" src="" alt="preview" />
+      </div>
+
+      <div id="adminProducts" class="admin-products"></div>
+    </section>
+
+    <section id="orders" class="admin-block">
+      <div class="block-head">
+        <div>
+          <small>Заявки</small>
+          <h2>Замовлення</h2>
+        </div>
+      </div>
+
+      <div id="ordersTable" class="orders-table"></div>
+    </section>
+  </main>
+
+  <script type="module" src="admin.js"></script>
+</body>
+</html>
